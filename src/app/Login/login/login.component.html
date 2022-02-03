@@ -1,0 +1,45 @@
+<html><body>
+    <div class="box">
+        <a routerLink="/register"><img src = "assets/img/close1.png" id="close"></a>
+        <img src = "assets/img/twitter.jpg" id="twitter"><br><br>
+        <span class="text-center">Sign into twitter</span><br>
+       
+        <form #UserForm="ngForm">
+                  
+                <div class="input-container">
+                    <input type="text" name = "email" #emailId="ngModel" [(ngModel)]="Loginmodel.email" 
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                    <label>Email</label>
+                    <div class="text-danger" *ngIf="(emailId.touched || UserForm.submitted) && 
+                    emailId.errors?.['required']" >
+                        Email id is required!
+                    </div>
+                    <div class="text-danger" *ngIf="(emailId.touched || UserForm.submitted) && 
+                    emailId.errors?.['pattern']" >
+                        Enter valid email address
+                    </div>
+                 </div>
+                    <div class="input-container">		
+                    <input type="password" name = "password" #password="ngModel" [(ngModel)]="Loginmodel.password" 
+                     required pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,16}">
+                    <label>Password</label>
+                    <div class="text-danger" *ngIf="(password.touched || UserForm.submitted) && 
+                    password.errors?.['required']">
+                      Password is required!
+                  </div>
+                  <div class="text-danger" *ngIf="(password.touched || UserForm.submitted) && 
+                  password.errors?.['pattern']" >
+                      password length should be 8-16character and contain letter, number and special character
+                  </div>
+                </div>
+                <button class="btn" (click)="loginUser()"  [disabled]="UserForm.form.invalid">Next</button><br>
+                <button routerLink="/forgot" class = "button2">Forgot Password?</button><br>
+                <p>Don't Have an Account <a routerLink="/register"> Sign Up</a></p>
+               
+                
+        </form>
+    </div>
+</body>
+
+
+</html>

@@ -1,0 +1,25 @@
+<html><body>
+    <div class="box">
+        <a routerLink="/register"><img src = "assets/img/close1.png" id="close"></a>
+        <img src = "assets/img/twitter.jpg" id="twitter"><br><br>
+        <span class="text-center">Find your twitter account</span><br>
+       
+        <form #UserForm="ngForm">
+                  
+                <div class="input-container">
+                    <input type="text" name = "email" #emailId="ngModel" [(ngModel)]="Usermodel.email" 
+                     required>
+                    <label>Email</label>
+                    
+                 </div>
+                   
+                <button class="btn" routerLink="/home" [disabled]="UserForm.form.invalid">Next</button><br>
+               
+            
+        </form>
+    </div>
+</body>
+
+
+</html>
+
